@@ -4,4 +4,8 @@ defmodule OverTheAir do
 
   defdelegate start(), to: Process
 
+  defdelegate check_device_status(), to: Process
+
+  defdelegate reset_device_status(), to: Process
+
 end

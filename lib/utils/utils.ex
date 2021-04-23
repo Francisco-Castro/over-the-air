@@ -22,4 +22,8 @@ defmodule OverTheAir.Utils do
     <<num :: integer-unsigned-8>>
   end
 
+  def remove_0x(<<_static_part::bytes-size(2)>> <> hex) do
+    hex
+  end
+
 end

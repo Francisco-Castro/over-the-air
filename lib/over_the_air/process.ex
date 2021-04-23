@@ -1,9 +1,9 @@
 defmodule OverTheAir.Process do
   require Logger
-  alias OverTheAir.{Transaction, HTTP}
+  alias OverTheAir.Transaction
 
   def start(path \\ "../../assets/example.hex") do
-    if HTTP.send_cheksum() == "0x0" do
+    if check_device_status() == "0x0" do
       path
       |> Path.expand(__DIR__)
       |> File.stream!()
@@ -13,4 +13,9 @@ defmodule OverTheAir.Process do
       {:error, :server_shows_not_0x0}
     end
   end
+
+  defdelegate check_device_status, to: Transaction
+
+  defdelegate reset_device_status, to: Transaction
+
 end
