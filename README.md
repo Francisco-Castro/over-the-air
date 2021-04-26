@@ -18,5 +18,5 @@ This repo is a basic implementation for uploading a firmware to a device. The de
 - When running the app there a bunch of log messages indicating how is the app working. Do not be overweling, this can be disable by adjusting the Logger configuration.
 
 ## Missing
-- Documentation is not included (tech debts)
+- Documentation is not included (tech debt)
 - More testing is needed (future tests would require mocks)
