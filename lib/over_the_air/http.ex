@@ -24,16 +24,21 @@ defmodule OverTheAir.HTTP do
     end
   end
 
-  def send_cheksum() do
-    {:ok, response} = HTTPoison.post(@url, "CHECKSUM", @http_options)
+  def send_checksum() do
+    response = HTTPoison.post(@url, "CHECKSUM", @http_options)
+    handle_checksum_response(response)
+  end
 
-    %HTTPoison.Response{body: body} = response
-
+  defp handle_checksum_response({:ok, _response = %HTTPoison.Response{body: body}}) do
     body
     |> Utils.remove_carriage_returns()
     |> String.split(" ")
     |> List.last()
   end
+  defp handle_checksum_response({:error, _error = %HTTPoison.Error{reason: reason}}) do
+    Logger.error("Server/Device is not running. Error: #{reason}")
+  end
+
 
   def times() do
     Application.get_env(:over_the_air, :times, 10)

@@ -25,9 +25,7 @@ defmodule OverTheAir.Transaction do
     end
   end
 
-  def check_device_status() do
-    HTTP.send_cheksum()
-  end
+  defdelegate check_device_status(), to: HTTP, as: :send_checksum
 
   def reset_device_status() do
     {status, error_or_chunk} = tranform_checksum()
