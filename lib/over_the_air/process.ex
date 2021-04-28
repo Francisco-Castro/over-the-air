@@ -1,4 +1,4 @@
-defmodule OverTheAir.Process do
+defmodule OverTheAir.Procs do
   require Logger
   alias OverTheAir.Transaction
 

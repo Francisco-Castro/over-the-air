@@ -1,11 +1,11 @@
 defmodule OverTheAir do
 
-  alias OverTheAir.Process
+  alias OverTheAir.Procs
 
-  defdelegate start(), to: Process
+  defdelegate start(), to: Procs
 
-  defdelegate check_device_status(), to: Process
+  defdelegate check_device_status(), to: Procs
 
-  defdelegate reset_device_status(), to: Process
+  defdelegate reset_device_status(), to: Procs
 
 end
